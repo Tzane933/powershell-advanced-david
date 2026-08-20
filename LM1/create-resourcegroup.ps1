@@ -1,15 +1,6 @@
 <#
-
-This creates an Azure resource group.
-
-
-This creates an Azure resource group in the Central US Azure region.
-
-
-This specifies the name of the Azure resource group.
-
+This script creates an Azure resource group. and its based in central US, and it also specifies the name of the azure resource group
 #>
-
 param (
     [Parameter(Mandatory)]
     [ValidateLength(3, 20)]

@@ -3,7 +3,7 @@ One issue I see is that the script accepts any resource group name and, in an en
 
 Task 2
 The purpose of this script, is to create an Azure resource group in the Central US. The parameter we use is ResouceGroupName, which specifies the name of the azure resource group.
-Here is a little example:./create-resourcegroup.ps1 -ResourceGroupName "LabResoruces"
+Here is a little example:.\create-resourcegroup.ps1 -ResourceGroupName "LabResoruces"
 
 Task 3
 The validation method we use is ValideLength(3,20)

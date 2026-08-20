@@ -1,6 +1,18 @@
 <#
-This script creates an Azure resource group. and its based in central US, and it also specifies the name of the azure resource group
+.SYNOPSIS
+Creates an Azure resource group.
+
+.DESCRIPTION
+Creates an Azure resource group in the Central US Azure region.
+
+.PARAMETER ResourceGroupName
+Specifies the name of the Azure resource group.
+
+.EXAMPLE
+.\create-resourcegroup.ps1 -ResourceGroupName "LabResources"
+Creates a resource group named LabResources.
 #>
+
 param (
     [Parameter(Mandatory)]
     [ValidateLength(3, 20)]

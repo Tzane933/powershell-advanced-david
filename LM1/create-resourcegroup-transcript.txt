@@ -1,12 +1,17 @@
 **********************
 PowerShell transcript start
-Start time: 20260820162729
+Start time: 20260825151743
 Username: PA-david\student
 RunAs User: PA-david\student
 Configuration Name: 
 Machine: PA-david (Microsoft Windows NT 10.0.26100.0)
-Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -noexit -command try { . "c:\Program Files\Microsoft VS Code\110a328ea5\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
-Process ID: 6784
+Host Application: C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe\pwsh.dll -NoProfile -ExecutionPolicy Bypass -Command Import-Module 'c:\Users\student\.vscode\extensions\ms-vscode.powershell-2025.4.0\modules\PowerShellEditorServices\PowerShellEditorServices.psd1'; Start-EditorServices -HostName 'Visual Studio Code Host' -HostProfileId 'Microsoft.VSCode' -HostVersion '2025.4.0' -BundledModulesPath 'c:\Users\student\.vscode\extensions\ms-vscode.powershell-2025.4.0\modules' -EnableConsoleRepl -StartupBanner "PowerShell Extension v2025.4.0
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/vscode-powershell
+Type 'help' to get help.
+" -LogLevel 'Warning' -LogPath 'c:\Users\student\AppData\Roaming\Code\logs\20260825T143913\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\student\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-7592-547885.json' -FeatureFlags @() 
+Process ID: 6620
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -18,12 +23,21 @@ SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
 Transcript started, output file is .\create-resourcegroup-transcript.txt
-Creating resource group: LabResources
-PS>TerminatingError(New-AzResourceGroup): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: Run Connect-AzAccount to login."
-Write-Error: Failed to create resource group: Run Connect-AzAccount to login.
-Write-Error: Failed to create resource group: Run Connect-AzAccount to login.
+Creating resource group: New-RG
+VERBOSE: Attempting to create Azure Resource Group 'New-RG' in 'centralus'
+VERBOSE: 3:17:45 PM - Created resource group 'New-RG' in location 'centralus'
+
+ResourceGroupName : New-RG
+Location          : centralus
+ProvisioningState : Succeeded
+Tags              : 
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/New-RG
+
+Resource group created successfully.
+VERBOSE: Resource group 'New-RG' successfully verified and created.
 Resource group operation completed.
+VERBOSE: Stopping transcript.
 **********************
 PowerShell transcript end
-End time: 20260820162734
+End time: 20260825151745
 **********************

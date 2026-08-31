@@ -20,7 +20,7 @@ param (
     [ValidateLength(3, 20)]
     [string]$ResourceGroupName,
     
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory=$false)]
     [hashtable]$Tags = @{Department = "IT"; Environment = "Test"}
 )
 
@@ -38,6 +38,7 @@ try {
     New-AzResourceGroup `
         -Name $ResourceGroupName `
         -Location "centralus" `
+        -Tags $Tags `
         -ErrorAction Stop
 
     Write-Host "Resource group created successfully."

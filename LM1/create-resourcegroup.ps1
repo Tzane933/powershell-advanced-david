@@ -18,7 +18,10 @@ Creates the resource group named LabResources.
 param (
     [Parameter(Mandatory)]
     [ValidateLength(3, 20)]
-    [string]$ResourceGroupName
+    [string]$ResourceGroupName,
+    
+    [Parameter(Mandatory)]
+    [hashtable]$Tags = @{Department = "IT"; Environment = "Test"}
 )
 
 $TranscriptPath = ".\create-resourcegroup-transcript.txt"

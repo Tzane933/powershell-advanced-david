@@ -1,3 +1,4 @@
+function New-TestResourceGroup {
 <#
 .SYNOPSIS
 Creates an Azure resource group.
@@ -47,4 +48,6 @@ finally {
     Write-Host "Resource group operation completed."
     Write-Verbose "Stopping transcript."
     Stop-Transcript
+}
+
 }

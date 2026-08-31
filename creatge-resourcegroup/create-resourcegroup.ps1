@@ -24,7 +24,7 @@ param (
     [hashtable]$Tags = @{Department = "IT"; Environment = "Test"}
 )
 
-$TranscriptPath = ".\create-resourcegroup-transcript.txt"
+$TranscriptPath = "C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt"
 
 Write-Verbose "Starting script and initiating transcript at $TranscriptPath"
 Write-Debug "Variable `$TranscriptPath evaluated as: $TranscriptPath"

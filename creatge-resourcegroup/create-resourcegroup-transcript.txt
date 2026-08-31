@@ -1,6 +1,6 @@
 **********************
 PowerShell transcript start
-Start time: 20260825151743
+Start time: 20260831153912
 Username: PA-david\student
 RunAs User: PA-david\student
 Configuration Name: 
@@ -10,8 +10,8 @@ Copyright (c) Microsoft Corporation.
 
 https://aka.ms/vscode-powershell
 Type 'help' to get help.
-" -LogLevel 'Warning' -LogPath 'c:\Users\student\AppData\Roaming\Code\logs\20260825T143913\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\student\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-7592-547885.json' -FeatureFlags @() 
-Process ID: 6620
+" -LogLevel 'Warning' -LogPath 'c:\Users\student\AppData\Roaming\Code\logs\20260831T151109\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\student\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-6224-274436.json' -FeatureFlags @() 
+Process ID: 3016
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -23,21 +23,36 @@ SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
 Transcript started, output file is .\create-resourcegroup-transcript.txt
-Creating resource group: New-RG
-VERBOSE: Attempting to create Azure Resource Group 'New-RG' in 'centralus'
-VERBOSE: 3:17:45 PM - Created resource group 'New-RG' in location 'centralus'
+Creating resource group: DevTest
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Create" on target "Resource Group 'DevTest'".
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+Y
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Replacing resource group ..." on target "DevTest".
+&Yes  Yes to &All  &No  No to A&ll  &Suspend
+Y
+Confirm
+Provided resource group already exists. Are you sure you want to update it?
+&Yes  &No  &Suspend
+Y
 
-ResourceGroupName : New-RG
+ResourceGroupName : DevTest
 Location          : centralus
 ProvisioningState : Succeeded
 Tags              : 
-ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/New-RG
+                    Name         Value
+                    ===========  =====
+                    Department   IT
+                    Environment  Test
+
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/DevTest
 
 Resource group created successfully.
-VERBOSE: Resource group 'New-RG' successfully verified and created.
 Resource group operation completed.
-VERBOSE: Stopping transcript.
 **********************
 PowerShell transcript end
-End time: 20260825151745
+End time: 20260831153921
 **********************

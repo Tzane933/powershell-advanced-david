@@ -14,9 +14,9 @@ Specifies the name of the Azure resource group.
 Creates the resource group named LabResources.
 #>
 
-[CmdletBinding()]
+[CmdletBinding(SupportsShouldProcess=$true)]
 param (
-    [Parameter(Mandatory)]
+    [Parameter(Mandatory, ValueFromPipeline=$true)]
     [ValidateLength(3, 20)]
     [string]$ResourceGroupName,
     
@@ -30,19 +30,32 @@ Write-Verbose "Starting script and initiating transcript at $TranscriptPath"
 Write-Debug "Variable `$TranscriptPath evaluated as: $TranscriptPath"
 Start-Transcript -Path $TranscriptPath
 
+$result = [PSCustomObject]@{    
+    ResourceGroupName = $ResourceGroupName    
+    Location          = 'centralus'    
+    Status            = 'Not Created'    
+    Tags              = $Tags    
+    Timestamp         = Get-Date
+}
+
 try {
     Write-Host "Creating resource group: $ResourceGroupName"
 
     Write-Verbose "Attempting to create Azure Resource Group '$ResourceGroupName' in 'centralus'"
     Write-Debug "Executing New-AzResourceGroup cmdlet with Name: $ResourceGroupName and Location: centralus"
-    New-AzResourceGroup `
-        -Name $ResourceGroupName `
-        -Location "centralus" `
-        -Tags $Tags `
-        -ErrorAction Stop
+    
+    # Task 5: Add ShouldProcess wrapper for WhatIf/Confirm support
+    if ($PSCmdlet.ShouldProcess("Resource Group '$ResourceGroupName'", "Create")) {
+        New-AzResourceGroup `
+            -Name $ResourceGroupName `
+            -Location "centralus" `
+            -Tag $Tags `
+            -ErrorAction Stop
 
-    Write-Host "Resource group created successfully."
-    Write-Verbose "Resource group '$ResourceGroupName' successfully verified and created."
+        $result.Status = "Created"
+        Write-Host "Resource group created successfully."
+        Write-Verbose "Resource group '$ResourceGroupName' successfully verified and created."
+    }
 }
 catch {
     Write-Error "Failed to create resource group: $($_.Exception.Message)"
@@ -52,6 +65,8 @@ finally {
     Write-Host "Resource group operation completed."
     Write-Verbose "Stopping transcript."
     Stop-Transcript
+    
+    $result
 }
 
 }

@@ -27,54 +27,83 @@ param (
     [hashtable]$Tags = @{Department = "IT"; Environment = "Test"}
 )
 
-$TranscriptPath = "C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt"
-
-Write-Verbose "Starting script and initiating transcript at $TranscriptPath"
-Write-Debug "Variable `$TranscriptPath evaluated as: $TranscriptPath"
-Start-Transcript -Path $TranscriptPath
-
-if ($PSCmdlet.ParameterSetName -eq 'ByProjectID') {
-    $TargetResourceGroupName = "RG-$ProjectID"
-} else {
-    $TargetResourceGroupName = $ResourceGroupName
+begin {
+    # 1. Function start verbose message
+    Write-Verbose "Function 'New-TestResourceGroup' execution started."
+    
+    $TranscriptPath = "C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt"
+    Write-Verbose "Initiating transcript at path: $TranscriptPath"
+    Start-Transcript -Path $TranscriptPath -ErrorAction SilentlyContinue
+    
+    # Initialize execution counters
+    $script:totalProcessed = 0
+    $script:totalSuccess = 0
+    $script:totalFailed = 0
 }
 
-$result = [PSCustomObject]@{    
-    ResourceGroupName = $TargetResourceGroupName    
-    Location          = 'centralus'    
-    Status            = 'Not Created'    
-    Tag               = $Tags    
-    Timestamp         = Get-Date
-}
+process {
+    $script:totalProcessed++
+    
+    # 2. Validation success verbose message (reached after parameter validation passes)
+    Write-Verbose "Parameter validation passed successfully for active parameter set: $($PSCmdlet.ParameterSetName)."
 
-try {
-    Write-Host "Creating resource group: $TargetResourceGroupName"
-
-    Write-Verbose "Attempting to create Azure Resource Group '$TargetResourceGroupName' in 'centralus'"
-    Write-Debug "Executing New-AzResourceGroup cmdlet with Name: $TargetResourceGroupName and Location: centralus"
-     # Task 5: Add ShouldProcess wrapper for WhatIf/Confirm support
-    if ($PSCmdlet.ShouldProcess("Resource Group '$TargetResourceGroupName'", "Create")) {
-        New-AzResourceGroup `
-            -Name $TargetResourceGroupName `
-            -Location "centralus" `
-            -Tag $Tags `
-            -ErrorAction Stop
-
-        $result.Status = "Created"
-        Write-Host "Resource group created successfully."
-        Write-Verbose "Resource group '$TargetResourceGroupName' successfully verified and created."
+    if ($PSCmdlet.ParameterSetName -eq 'ByProjectID') {
+        $TargetResourceGroupName = "RG-$ProjectID"
+    } else {
+        $TargetResourceGroupName = $ResourceGroupName
     }
-}
-catch {
-    Write-Error "Failed to create resource group: $($_.Exception.Message)"
-    Write-Debug "Exception caught during resource group creation: $($_.Exception.Message)"
-}
-finally {
-    Write-Host "Resource group operation completed."
-    Write-Verbose "Stopping transcript."
-    Stop-Transcript
+
+    $result = [PSCustomObject]@{    
+        ResourceGroupName = $TargetResourceGroupName    
+        Location          = 'centralus'    
+        Status            = 'Not Created'    
+        Tag               = $Tags    
+        Timestamp         = Get-Date
+    }
+
+    try {
+        Write-Host "Creating resource group: $TargetResourceGroupName"
+
+        # 3. Resource group creation attempt verbose message
+        Write-Verbose "Attempting to create Azure Resource Group '$TargetResourceGroupName' in region 'centralus'."
+        
+        if ($PSCmdlet.ShouldProcess("Resource Group '$TargetResourceGroupName'", "Create")) {
+            New-AzResourceGroup `
+                -Name $TargetResourceGroupName `
+                -Location "centralus" `
+                -Tag $Tags `
+                -ErrorAction Stop
+
+            $result.Status = "Created"
+            $script:totalSuccess++
+            Write-Host "Resource group created successfully."
+            
+            # 4. Successful completion verbose message
+            Write-Verbose "Resource group '$TargetResourceGroupName' successfully verified and created."
+        }
+    }
+    catch {
+        Write-Error "Failed to create resource group: $($_.Exception.Message)"
+        Write-Verbose "Error caught during creation of '$TargetResourceGroupName': $($_.Exception.Message)"
+        $script:totalFailed++
+        $result.Status = "Error"
+    }
     
     $result
+}
+
+end {
+    Write-Host "====================" -ForegroundColor Blue
+    Write-Host " Execution Summary  " -ForegroundColor Blue
+    Write-Host "====================" -ForegroundColor Blue
+    Write-Host "Total Processed     : $script:totalProcessed"
+    Write-Host "Successfully Created: $script:totalSuccess" -ForegroundColor Green
+    Write-Host "Failed/Errors       : $script:totalFailed" -ForegroundColor Red
+    Write-Host "====================" -ForegroundColor Blue
+
+    Write-Host "Resource group operation completed."
+    Write-Verbose "Stopping transcript and finalizing function execution."
+    Stop-Transcript -ErrorAction SilentlyContinue
 }
 
 }

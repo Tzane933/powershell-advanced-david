@@ -10,4 +10,8 @@ I implemented the begin, process, and end blocks to support full pipeline stream
 ### Task 4
 I implemented a more granular 'Write-Verbose' tracking across the function lifecycle to trace execution milestones. The whole funcion starts and logs when 'New-TestResourceGroup' begins the transcript, and once everything is validated and everthing becomes clear to goot goves is a detailed target name and region.
 ### Task 5
-I made 'ResourceGroups.txt' which has the project ID's '1001', '1002', & '1003'
+I made 'ResourceGroups.txt' which has the project ID's '1001', '1002', & '1003' 3 objects were processed and all 3 were created with no issues and I got no warnings.
+### Task 6
+I added a counter variable in the 'begin' block (`$script:totalProcessed`, `$script:totalCreated`, `$script:totalSkipped`, and `$script:totalErrors`),I also updated the 'process' block so it it can track successful creations, skipped operations like for example '-WhatIf' and also caught exceptions it also provides a formatted summary now in a table
+### Task 7
+I updated the comment-based help block inside the function so it more accurately reflects the parameter sets aand usage examples. I also updated the repo and function + README file.

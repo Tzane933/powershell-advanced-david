@@ -1,6 +1,6 @@
 **********************
 PowerShell transcript start
-Start time: 20260907165003
+Start time: 20260907183412
 Username: PA-david\student
 RunAs User: PA-david\student
 Configuration Name: 
@@ -23,9 +23,9 @@ SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
 Transcript started, output file is C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt
-Creating resource group: Dev1
+Creating resource group: 1001
 
-ResourceGroupName : Dev1
+ResourceGroupName : 1001
 Location          : centralus
 ProvisioningState : Succeeded
 Tags              : 
@@ -34,14 +34,65 @@ Tags              :
                     Department   IT
                     Environment  Test
 
-ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/Dev1
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/1001
 
-WARNING: You're using Az version 16.2.0. The latest version of Az is 16.3.0. Upgrade your Az modules using the following commands:
-  Update-PSResource Az -WhatIf    -- Simulate updating your Az modules.
-  Update-PSResource Az            -- Update your Az modules.
 Resource group created successfully.
+
+ResourceGroupName : 1001
+Location          : centralus
+Status            : Created
+Tag               : {[Environment, Test], [Department, IT]}
+Timestamp         : 9/7/2026 6:34:12 PM
+
+Creating resource group: 1002
+ResourceGroupName : 1002
+Location          : centralus
+ProvisioningState : Succeeded
+Tags              : 
+                    Name         Value
+                    ===========  =====
+                    Department   IT
+                    Environment  Test
+
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/1002
+
+Resource group created successfully.
+
+ResourceGroupName : 1002
+Location          : centralus
+Status            : Created
+Tag               : {[Environment, Test], [Department, IT]}
+Timestamp         : 9/7/2026 6:34:13 PM
+
+Creating resource group: 1003
+ResourceGroupName : 1003
+Location          : centralus
+ProvisioningState : Succeeded
+Tags              : 
+                    Name         Value
+                    ===========  =====
+                    Department   IT
+                    Environment  Test
+
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/1003
+
+Resource group created successfully.
+
+ResourceGroupName : 1003
+Location          : centralus
+Status            : Created
+Tag               : {[Environment, Test], [Department, IT]}
+Timestamp         : 9/7/2026 6:34:14 PM
+
+====================
+ Execution Summary
+====================
+Total Processed     : 3
+Successfully Created: 3
+Failed/Errors       : 0
+====================
 Resource group operation completed.
 **********************
 PowerShell transcript end
-End time: 20260907165004
+End time: 20260907183415
 **********************

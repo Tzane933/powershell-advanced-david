@@ -16,9 +16,12 @@ Creates the resource group named LabResources.
 
 [CmdletBinding(SupportsShouldProcess=$true)]
 param (
-    [Parameter(Mandatory, ValueFromPipeline=$true)]
+    [Parameter(Mandatory, ParameterSetName='ByName', ValueFromPipeline=$true)]
     [ValidateLength(3, 20)]
     [string]$ResourceGroupName,
+    
+    [Parameter(Mandatory, ParameterSetName='ByProjectID', ValueFromPipeline=$true)]
+    [int]$ProjectID,
     
     [Parameter(Mandatory=$false)]
     [hashtable]$Tags = @{Department = "IT"; Environment = "Test"}
@@ -30,31 +33,36 @@ Write-Verbose "Starting script and initiating transcript at $TranscriptPath"
 Write-Debug "Variable `$TranscriptPath evaluated as: $TranscriptPath"
 Start-Transcript -Path $TranscriptPath
 
+if ($PSCmdlet.ParameterSetName -eq 'ByProjectID') {
+    $TargetResourceGroupName = "RG-$ProjectID"
+} else {
+    $TargetResourceGroupName = $ResourceGroupName
+}
+
 $result = [PSCustomObject]@{    
-    ResourceGroupName = $ResourceGroupName    
+    ResourceGroupName = $TargetResourceGroupName    
     Location          = 'centralus'    
     Status            = 'Not Created'    
-    Tags              = $Tags    
+    Tag               = $Tags    
     Timestamp         = Get-Date
 }
 
 try {
-    Write-Host "Creating resource group: $ResourceGroupName"
+    Write-Host "Creating resource group: $TargetResourceGroupName"
 
-    Write-Verbose "Attempting to create Azure Resource Group '$ResourceGroupName' in 'centralus'"
-    Write-Debug "Executing New-AzResourceGroup cmdlet with Name: $ResourceGroupName and Location: centralus"
-    
-    # Task 5: Add ShouldProcess wrapper for WhatIf/Confirm support
-    if ($PSCmdlet.ShouldProcess("Resource Group '$ResourceGroupName'", "Create")) {
+    Write-Verbose "Attempting to create Azure Resource Group '$TargetResourceGroupName' in 'centralus'"
+    Write-Debug "Executing New-AzResourceGroup cmdlet with Name: $TargetResourceGroupName and Location: centralus"
+     # Task 5: Add ShouldProcess wrapper for WhatIf/Confirm support
+    if ($PSCmdlet.ShouldProcess("Resource Group '$TargetResourceGroupName'", "Create")) {
         New-AzResourceGroup `
-            -Name $ResourceGroupName `
+            -Name $TargetResourceGroupName `
             -Location "centralus" `
             -Tag $Tags `
             -ErrorAction Stop
 
         $result.Status = "Created"
         Write-Host "Resource group created successfully."
-        Write-Verbose "Resource group '$ResourceGroupName' successfully verified and created."
+        Write-Verbose "Resource group '$TargetResourceGroupName' successfully verified and created."
     }
 }
 catch {

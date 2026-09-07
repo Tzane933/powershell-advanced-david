@@ -1,6 +1,6 @@
 **********************
 PowerShell transcript start
-Start time: 20260831153912
+Start time: 20260907165003
 Username: PA-david\student
 RunAs User: PA-david\student
 Configuration Name: 
@@ -10,8 +10,8 @@ Copyright (c) Microsoft Corporation.
 
 https://aka.ms/vscode-powershell
 Type 'help' to get help.
-" -LogLevel 'Warning' -LogPath 'c:\Users\student\AppData\Roaming\Code\logs\20260831T151109\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\student\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-6224-274436.json' -FeatureFlags @() 
-Process ID: 3016
+" -LogLevel 'Warning' -LogPath 'c:\Users\student\AppData\Roaming\Code\logs\20260907T153951\window1\exthost\ms-vscode.powershell' -SessionDetailsPath 'c:\Users\student\AppData\Roaming\Code\User\globalStorage\ms-vscode.powershell\sessions\PSES-VSCode-3876-957193.json' -FeatureFlags @() 
+Process ID: 8664
 PSVersion: 7.6.5
 PSEdition: Core
 GitCommitId: 7.6.5
@@ -22,24 +22,10 @@ PSRemotingProtocolVersion: 2.4
 SerializationVersion: 1.1.0.1
 WSManStackVersion: 3.0
 **********************
-Transcript started, output file is .\create-resourcegroup-transcript.txt
-Creating resource group: DevTest
-Confirm
-Are you sure you want to perform this action?
-Performing the operation "Create" on target "Resource Group 'DevTest'".
-&Yes  Yes to &All  &No  No to A&ll  &Suspend
-Y
-Confirm
-Are you sure you want to perform this action?
-Performing the operation "Replacing resource group ..." on target "DevTest".
-&Yes  Yes to &All  &No  No to A&ll  &Suspend
-Y
-Confirm
-Provided resource group already exists. Are you sure you want to update it?
-&Yes  &No  &Suspend
-Y
+Transcript started, output file is C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt
+Creating resource group: Dev1
 
-ResourceGroupName : DevTest
+ResourceGroupName : Dev1
 Location          : centralus
 ProvisioningState : Succeeded
 Tags              : 
@@ -48,11 +34,14 @@ Tags              :
                     Department   IT
                     Environment  Test
 
-ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/DevTest
+ResourceId        : /subscriptions/b82eeb45-7ff3-4e76-aa2e-db175b846301/resourceGroups/Dev1
 
+WARNING: You're using Az version 16.2.0. The latest version of Az is 16.3.0. Upgrade your Az modules using the following commands:
+  Update-PSResource Az -WhatIf    -- Simulate updating your Az modules.
+  Update-PSResource Az            -- Update your Az modules.
 Resource group created successfully.
 Resource group operation completed.
 **********************
 PowerShell transcript end
-End time: 20260831153921
+End time: 20260907165004
 **********************

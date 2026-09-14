@@ -36,9 +36,12 @@ param (
 
 begin {
     Write-Verbose "Function 'New-TestResourceGroup' execution started."
-    $TranscriptPath = "C:\Users\student\Desktop\powershell-advanced-david\output\create-resourcegroup-transcript.txt"
-    Write-Verbose "Initiating transcript at path: $TranscriptPath"
-    Start-Transcript -Path $TranscriptPath -ErrorAction SilentlyContinue
+
+    # Set up log file path relative to Public folder ($PSScriptRoot\..\Logs)
+    $script:LogFilePath = "$PSScriptRoot\..\Logs\New-TestResourceGroup-Log-$(Get-Date -Format 'yyyyMMdd-HHmmss').txt"
+
+    # Replaced Start-Transcript with Write-ModuleLog
+    Write-ModuleLog -Message "Starting the creation of Resource Group..." -Level INFO -LogFile $script:LogFilePath
     
     # Task 6 Counters
     $script:totalProcessed = 0
@@ -53,6 +56,7 @@ process {
 
     if ($PSCmdlet.ParameterSetName -eq 'ByProjectID') {
         $TargetResourceGroupName = "RG-$ProjectID"
+        Write-ModuleLog -Message "Creating Resource Group based on ProjectID: $ProjectID" -Level INFO -LogFile $script:LogFilePath
     } else {
         $TargetResourceGroupName = $ResourceGroupName
     }
@@ -71,6 +75,8 @@ process {
         
         # Check ShouldProcess (handles WhatIf / Confirm)
         if ($PSCmdlet.ShouldProcess("Resource Group '$TargetResourceGroupName'", "Create")) {
+            Write-ModuleLog -Message "Creating Resource Group '$TargetResourceGroupName' in 'centralus'" -Level INFO -LogFile $script:LogFilePath
+
             New-AzResourceGroup `
                 -Name $TargetResourceGroupName `
                 -Location "centralus" `
@@ -85,11 +91,13 @@ process {
             # Tracks when user skips or WhatIf prevents execution
             $script:totalSkipped++
             Write-Verbose "Resource group creation skipped for '$TargetResourceGroupName'."
+            Write-ModuleLog -Message "Resource Group '$TargetResourceGroupName' creation skipped." -Level WARN -LogFile $script:LogFilePath
         }
     }
     catch {
         Write-Error "Failed to create resource group: $($_.Exception.Message)"
         Write-Verbose "Error caught during creation of '$TargetResourceGroupName': $($_.Exception.Message)"
+        Write-ModuleLog -Message "Failed to create '$TargetResourceGroupName': $($_.Exception.Message)" -Level ERROR -LogFile $script:LogFilePath
         $script:totalErrors++
         $result.Status = "Error"
     }
@@ -108,8 +116,9 @@ end {
     Write-Host "================================" -ForegroundColor Blue
 
     Write-Host "Resource group operation completed."
-    Write-Verbose "Stopping transcript and finalizing function execution."
-    Stop-Transcript -ErrorAction SilentlyContinue
+
+    # Replaced Stop-Transcript with Write-ModuleLog
+    Write-ModuleLog -Message "Finished processing the creation of Resource Group." -Level INFO -LogFile $script:LogFilePath
 }
 
 }

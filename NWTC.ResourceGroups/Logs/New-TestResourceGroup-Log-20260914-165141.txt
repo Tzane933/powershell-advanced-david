@@ -1,0 +1,3 @@
+2026-09-14 16:51:41 [INFO] Starting the creation of Resource Group...
+2026-09-14 16:51:41 [INFO] Creating Resource Group 'TestRG-LogCheck' in 'centralus'
+2026-09-14 16:51:51 [INFO] Finished processing the creation of Resource Group.

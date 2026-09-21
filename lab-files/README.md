@@ -1,7 +1,9 @@
 ## Project Purpose
 To practice powershell scripting and to get better at it, also learning how a real life environment works and learning how to troubleshoot issues in that environment.
 ## Files Included
-* **`lm2-lab.md`**
+* **`lm1-lab.md`** * 1 to 6 **`lm6-lab.md`**
+* **`CHANEGLOG.MD`**
+* **`RELEASTENOTES.MD`**
 * **`create-resourcegroup.tests.ps1`**
 * **`README.md`**
 

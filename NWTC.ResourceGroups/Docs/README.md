@@ -18,5 +18,7 @@ Create by project ID New-TestResourceGroup -ProjectID 1001
 Pipeline a input with a whatif simulation 1001 | New-TestResourceGroup -WhatIf
 Version
 
+Check what current groups you have created with the command Get-ResourceGroupSummary it also provides the location of the group & Tags you have applied to the group
+
 ### Version 
-Module Version: 1.0.0
+Module Version: 1.1.0

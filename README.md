@@ -13,7 +13,3 @@ I added a new directory to my repo called NWTC.ResourceGroups this new directory
 It has flexible parameter sets. You can create resource groups by using the command 'ResourceGroupName' or automatically with the command 'ProjectID' which prefixes the name as 'RG-<ID>'
 It has safety controls integrated. For example, `CmdletBinding(SupportsShouldProcess=$true)` also provides native support for '-WhatIf' and '-Confirm' and dry-run simulations.
 And a modular architecture built with separate 'Public' and 'Private' function directories to maintain a clean scope and isolate the helper tools.
-<<<<<<< HEAD
-=======
-Resource Summaries quickly retrieves all group names, locations, and even tags that you applied to your groups via the command `Get-ResourceGroupSummary`
->>>>>>> b2373f3 (Big push LM6)

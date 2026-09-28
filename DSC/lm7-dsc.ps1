@@ -1,5 +1,4 @@
 Configuration DavidBaseline {
-    
     Node "localhost" {
         
         
@@ -7,6 +6,13 @@ Configuration DavidBaseline {
             Ensure          = "Present"
             Type            = "Directory"
             DestinationPath = "C:\AdminTools"
+        }
+
+        
+        File EnsureScriptsFolder {
+            Ensure          = "Present"
+            Type            = "Directory"
+            DestinationPath = "C:\AdminScripts"
         }
     }
 }

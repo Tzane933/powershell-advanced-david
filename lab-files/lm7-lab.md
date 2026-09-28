@@ -76,3 +76,35 @@ Type                 : directory
 PSComputerName       : 
 CimClassName         : MSFT_FileDirectoryConfiguration
 ```
+## Task 6
+I added the second resource which was 'EnsureScriptsFolder'
+
+
+Recompile and redeployed the configuration
+```
+VERBOSE: Perform operation 'Invoke CimMethod' with following parameters, ''methodName' = SendConfigurationApply,'className' = MSFT_DSCLocalConfigurationManager,'namespaceName' = root/Microsoft/Windows/DesiredStateConfiguration'.                                                                                          
+VERBOSE: An LCM method call arrived from computer PA-david with user sid S-1-5-21-2342201011-3317785503-1470192587-500.                                                                                                                                                                                                       
+VERBOSE: [PA-david]: LCM:  [ Start  Set      ]                                                                                                                                                                                                                                                                                
+VERBOSE: [PA-david]: LCM:  [ Start  Resource ]  [[File]EnsureAdminFolder]                                                                                                                                                                                                                                                     
+VERBOSE: [PA-david]: LCM:  [ Start  Test     ]  [[File]EnsureAdminFolder]                                                                                                                                                                                                                                                     
+VERBOSE: [PA-david]:                            [[File]EnsureAdminFolder] The destination object was found and no action is required.                                                                                                                                                                                         
+VERBOSE: [PA-david]: LCM:  [ End    Test     ]  [[File]EnsureAdminFolder]  in 0.0320 seconds.
+VERBOSE: [PA-david]: LCM:  [ Skip   Set      ]  [[File]EnsureAdminFolder]
+VERBOSE: [PA-david]: LCM:  [ End    Resource ]  [[File]EnsureAdminFolder]
+VERBOSE: [PA-david]: LCM:  [ Start  Resource ]  [[File]EnsureScriptsFolder]
+VERBOSE: [PA-david]: LCM:  [ Start  Test     ]  [[File]EnsureScriptsFolder]
+VERBOSE: [PA-david]:                            [[File]EnsureScriptsFolder] The system cannot find the file specified.
+VERBOSE: [PA-david]:                            [[File]EnsureScriptsFolder] The related file/directory is: C:\AdminScripts.
+VERBOSE: [PA-david]: LCM:  [ End    Test     ]  [[File]EnsureScriptsFolder]  in 0.0040 seconds.
+VERBOSE: [PA-david]: LCM:  [ Start  Set      ]  [[File]EnsureScriptsFolder]
+VERBOSE: [PA-david]:                            [[File]EnsureScriptsFolder] The system cannot find the file specified.
+VERBOSE: [PA-david]:                            [[File]EnsureScriptsFolder] The related file/directory is: C:\AdminScripts.
+VERBOSE: [PA-david]: LCM:  [ End    Set      ]  [[File]EnsureScriptsFolder]  in 0.0340 seconds.
+VERBOSE: [PA-david]: LCM:  [ End    Resource ]  [[File]EnsureScriptsFolder]
+VERBOSE: [PA-david]: LCM:  [ End    Set      ]
+VERBOSE: [PA-david]: LCM:  [ End    Set      ]    in  0.4720 seconds.
+VERBOSE: Operation 'Invoke CimMethod' complete.
+VERBOSE: Time taken for configuration job to complete is 1.379 seconds
+```
+
+Ran Test-DscConfgiuration the output was true.

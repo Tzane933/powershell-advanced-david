@@ -49,6 +49,7 @@ VERBOSE: Time taken for configuration job to complete is 0.642 seconds
 
 ## Task 5
 Test-DscConfiguration, output was True
+
 Get-DsConfiguration output:
 ```
 ConfigurationName    : DavidBaseline                                                                                                                                                                                                                                                                                          
@@ -76,6 +77,7 @@ Type                 : directory
 PSComputerName       : 
 CimClassName         : MSFT_FileDirectoryConfiguration
 ```
+<<<<<<< HEAD
 ## Task 6
 I added the second resource which was 'EnsureScriptsFolder'
 
@@ -108,3 +110,5 @@ VERBOSE: Time taken for configuration job to complete is 1.379 seconds
 ```
 
 Ran Test-DscConfgiuration the output was true.
+=======
+>>>>>>> 40bbe13586252134eafb5e1026d8c3c64f108b9f

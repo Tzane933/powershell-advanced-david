@@ -49,6 +49,7 @@ VERBOSE: Time taken for configuration job to complete is 0.642 seconds
 
 ## Task 5
 Test-DscConfiguration, output was True
+
 Get-DsConfiguration output:
 ```
 ConfigurationName    : DavidBaseline                                                                                                                                                                                                                                                                                          

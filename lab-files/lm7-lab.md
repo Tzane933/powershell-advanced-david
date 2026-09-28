@@ -77,7 +77,7 @@ Type                 : directory
 PSComputerName       : 
 CimClassName         : MSFT_FileDirectoryConfiguration
 ```
-<<<<<<< HEAD
+
 ## Task 6
 I added the second resource which was 'EnsureScriptsFolder'
 
@@ -109,6 +109,4 @@ VERBOSE: Operation 'Invoke CimMethod' complete.
 VERBOSE: Time taken for configuration job to complete is 1.379 seconds
 ```
 
-Ran Test-DscConfgiuration the output was true.
-=======
->>>>>>> 40bbe13586252134eafb5e1026d8c3c64f108b9f
+Also ran Test-DscConfgiuration the output was true.

@@ -25,7 +25,7 @@ Configuration DavidBaseline {
 }
 ```
 ## Task 3
-Created the MOF file which is named lm7=-dsc.ps1 and its located in the DSC dir.
+Created the MOF file which is named lm7-dsc.ps1 and its located in the DSC dir.
 The purpose of this file its to be a config file that can be easily used and be applied to the target node.
 One thing I noticed is once I ran it it gives a nicely detailed output telling me the mode of the file, when it was also last written and also the length name.
 
